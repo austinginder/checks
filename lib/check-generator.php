@@ -38,8 +38,8 @@ class CheckGenerator {
 		$page_width = 8.5;
 		$page_height = 11;
 
-		$top_margin = 0;
-		$left_margin = 2.5;
+		$top_margin = 0.25;
+		$left_margin = 0.25;
 
 		$columns = 1;
 		$gutter = 3/16;
@@ -64,7 +64,7 @@ class CheckGenerator {
 		$logo_width = 0.5; // marvelous labs
 		
 
-		$pdf=new FPDF('P','in',array($page_width,$page_height));
+		$pdf=new PDF('P','in',array($page_width,$page_height));
 		$pdf->AddFont('Twcen','','twcen.php',dirname(__FILE__) . "/../fonts/");
 		$pdf->AddFont('Micr','','micr.php',dirname(__FILE__) . "/../fonts/");
 		$pdf->AddFont('Courier','','courier.php',dirname(__FILE__) . "/../fonts/");
@@ -111,7 +111,7 @@ class CheckGenerator {
 			$pdf->Cell( 2, (7/72), $check['from_address2'], 0, 2 );
 
 			// date
-			$pdf->Line( $x + 3.5, $y + .58, $x + 3.5 + 1.2, $y + .58 );
+			$pdf->Line( $x + 3.5, $y + .58, $x + 3.5 + 1.3, $y + .58 );
 			$pdf->SetXY( $x + 3.5, $y + .48);
 			$date_str = $this->matchcase($check['from_name'],"date");
 			$pdf->Cell( 1, (7/72), $date_str );
@@ -219,6 +219,9 @@ class CheckGenerator {
 					$pdf->Cell( 1, .25, $check['signature'] );
 				}
 			}
+
+			// Back of check
+			$pdf->RotatedImage($check['signature'],.5,6,0,.4,90);
 
 			// pre-authorized disclaimer
 			$pdf->SetFont('Arial','',6);
