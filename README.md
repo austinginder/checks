@@ -12,6 +12,8 @@ Generates PDF of a check
 
 This generator was originally forked from [https://github.com/aaronpk/checks](https://github.com/aaronpk/checks) which was created for printing purposes. It's been adapted to generate the front and back of a check which can be used on screen for mobile deposits for paperless checks.
 
+![Screenshot](screenshot.webp?raw=true)
+
 ## FAQs
 
 **Question:** Can I use this to print checks?<br />
