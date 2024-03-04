@@ -1,0 +1,19 @@
+{
+    "logo": "",
+    "from_name": "Your Name or Company",
+    "from_address1": "Portland, OR 97214",
+    "from_address2": "Lancaster, PA 17603",
+    "routing_number": "123000220",
+    "account_number": "123456789012",
+    "bank_1": "US Bank",
+    "bank_2": "1225 SE Cesar E Chavez Blvd",
+    "bank_3": "Portland, OR 97214-4371",
+    "bank_4": "(503) 275-4550",
+    "signature_front": "",
+    "signature_back": "",
+    "pay_to": "Lorem Ipsum",
+    "amount": "1.00",
+    "date": "03/04/2024",
+    "memo": "",
+    "check_number": "1008"
+}
