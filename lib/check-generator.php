@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__)."/fpdf.inc.php";
+
 require_once dirname(__FILE__)."/textualnumber.php";
 
 class CheckGenerator {
@@ -30,7 +30,6 @@ class CheckGenerator {
 		}
 
 	}
-
 
 	function PrintChecks() {
 
@@ -121,7 +120,7 @@ class CheckGenerator {
 			$pdf->Line( $x + $cell_left, $y + 1.1, $x + $cell_left + 4.1, $y + 1.1 );
 			$pdf->SetXY( $x + $cell_left, $y + .88);
 			$pay_str = $this->matchcase($check['from_name'],"pay to the order of");
-			$pdf->MultiCell( .6, (7/72), $pay_str, '', '', 'L' );
+			$pdf->MultiCell( .6, (7/72), $pay_str, '', '', false );
 
 			// amount box
 			$pdf->Rect( $x + 4.5, $y + .83, 1.1, .25 );
