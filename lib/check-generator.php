@@ -212,6 +212,7 @@ class CheckGenerator {
 			if( substr($check['signature'],-3) == 'png' ) {
 				$sig_offset = 1.75;  // width of signature
 				$pdf->Image($check['signature'], $x + $cell_left + 3.4, $y + 1.88, $sig_offset);
+				$pdf->RotatedImage($check['signature'],.5,6,0,.4,90); // Back of check
 			} else {
 				$pdf->SetFont('Arial','i',10);
 				if( $check['signature'] != "" ) {
@@ -219,9 +220,6 @@ class CheckGenerator {
 					$pdf->Cell( 1, .25, $check['signature'] );
 				}
 			}
-
-			// Back of check
-			$pdf->RotatedImage($check['signature'],.5,6,0,.4,90);
 
 			// pre-authorized disclaimer
 			$pdf->SetFont('Arial','',6);
