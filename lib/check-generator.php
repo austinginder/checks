@@ -208,26 +208,28 @@ class CheckGenerator {
 			$pdf->Cell( 5, (10/72), $routingstring );
 
 
-			// signature
-			if( substr($check['signature'],-3) == 'png' ) {
+			// signature for front of check
+			if( substr($check['signature_front'],-3) == 'png' ) {
 				$sig_offset = 1.75;  // width of signature
-				$pdf->Image($check['signature'], $x + $cell_left + 3.4, $y + 1.88, $sig_offset);
-				$pdf->RotatedImage($check['signature'],.5,6,0,.4,90); // Back of check
+				$pdf->Image($check['signature_front'], $x + $cell_left + 3.4, $y + 1.88, $sig_offset);
+				
 			} else {
 				$pdf->SetFont('Arial','i',10);
-				if( $check['signature'] != "" ) {
+				if( $check['signature_front'] != "" ) {
 					$pdf->SetXY( $x + $cell_left + 3.4, $y + 2.01);
-					$pdf->Cell( 1, .25, $check['signature'] );
+					$pdf->Cell( 1, .25, $check['signature_front'] );
 				}
 			}
-
+			// signature for back of check
+			if( substr($check['signature_back'],-3) == 'png' ) {
+				$pdf->RotatedImage($check['signature_back'],.5,6,0,.4,90); 
+			}
 			// pre-authorized disclaimer
 			$pdf->SetFont('Arial','',6);
 			if( isset($check['pre_auth']) ) {
 				$pdf->SetXY( $x + $cell_left + 3.3, $y + 2.155);
 				$pdf->Cell( 1, .25, "This check is pre-authorized by your depositor" );
 			}
-
 
 			if( $pos == (($rows*$columns)-1) && !($lpos == count($this->checks)-1) ) {
 				$pdf->AddPage();
