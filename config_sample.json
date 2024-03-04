@@ -1,8 +1,8 @@
 {
     "logo": "",
     "from_name": "Your Name or Company",
-    "from_address1": "Portland, OR 97214",
-    "from_address2": "Lancaster, PA 17603",
+    "from_address1": "1234 E Main St",
+    "from_address2": "Portland, OR 97214",
     "routing_number": "123000220",
     "account_number": "123456789012",
     "bank_1": "US Bank",
