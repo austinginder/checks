@@ -1,32 +1,36 @@
 <?php
 
 require_once "vendor/autoload.php";
-
-date_default_timezone_set('UTC');
-
 include("lib/rotate-images.php");
 include("lib/check-generator.php");
 
-$CHK = new CheckGenerator;
+date_default_timezone_set('UTC');
 
-$check['logo']           = "";
-$check['from_name']      = "Your Name";
-$check['from_address1']  = "1234 E Main St";
-$check['from_address2']  = "Portland, OR 97214";
-$check['routing_number'] = "123000220";
-$check['account_number'] = "123456789012";
-$check['bank_1']         = "US Bank";
-$check['bank_2']         = "1225 SE Cesar E Chavez Blvd";
-$check['bank_3']         = "Portland, OR 97214-4371";
-$check['bank_4']         = "(503) 275-4550";
-$check['signature']      = "";
-$check['pay_to']         = "";
-$check['amount']         = '';
-$check['date']           = "";
-$check['memo']           = "";
-$check['check_number']   = 1000;
+$CHK                   = new CheckGenerator;
+$check                 = (object) [];
+$check->logo           = "";
+$check->from_name      = "Your Name";
+$check->from_address1  = "1234 E Main St";
+$check->from_address2  = "Portland, OR 97214";
+$check->routing_number = "123000220";
+$check->account_number = "123456789012";
+$check->bank_1         = "US Bank";
+$check->bank_2         = "1225 SE Cesar E Chavez Blvd";
+$check->bank_3         = "Portland, OR 97214-4371";
+$check->bank_4         = "(503) 275-4550";
+$check->signature      = "";
+$check->pay_to         = "";
+$check->amount         = '';
+$check->date           = "";
+$check->memo           = "";
+$check->check_number   = 1000;
+$configurations        = dirname(__FILE__) . "/config.json";
 
-$CHK->AddCheck($check);
+if ( file_exists( $configurations ) ) {
+  $check = json_decode( file_get_contents( $configurations  ) );
+}
+
+$CHK->AddCheck( (array) $check );
 
 if(array_key_exists('REMOTE_ADDR', $_SERVER)) {
   // Called from a browser

@@ -7,9 +7,9 @@ class CheckGenerator {
 	var $checks = array();
 
 	function AddCheck($check) {
-		$required_fields = array('routing_number','account_number','check_number',
+		$required_fields = [ 'routing_number','account_number','check_number',
 			'pay_to','amount','date','from_name','from_address1','from_address2',
-			'bank_1','bank_2','bank_3','bank_4','memo');
+			'bank_1','bank_2','bank_3','bank_4','memo' ];
 
 		$valid = true;
 
