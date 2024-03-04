@@ -1,21 +1,35 @@
-Checks
+Paperless Checks
 ======
 
-This is a horrible mess of code that generates a PDF of checks that you can print out on check paper.
+Generates PDF of a check
 
-To use it, edit `checks.php` and fill in your bank details, routing number, account number, etc. You can optionally include pay-to information as well.
+## Getting started
 
-There are almost certainly better ways of doing this, like using an actual program designed for this purpose. However, I've been using this code for almost 10 years now, and is for some reason the easiest way for me to print checks.
+- Git clone this repo <br />`git clone https://github.com/austinginder/checks`
+- Copy `config_sample.json` to `config.json`
+- Modify `config.json` with bank details, routing number, account number and etc.
+- Run PHP server `php -S localhost:8000` then visit [http://localhost:8000](http://localhost:8000)
 
-Check Paper
------------
+This generator was originally forked from [https://github.com/aaronpk/checks](https://github.com/aaronpk/checks) which was created for printing purposes. It's been adapted to generate the front and back of a check which can be used on screen for mobile deposits for paperless checks.
 
-I can't find the link to the exact check paper I have, I bought like 1000 sheets a long time ago and have been working through that stock since then. I think it is this one though: http://www.amazon.com/Three-Personal-Sized-Blank-Check/dp/B002WCVW5Q
+## FAQs
 
+**Question:** Can I use this to print checks?<br />
+**Answer:** Maybe, I never tried. I personally only use it to generate checks and then remote deposit from my screen.
 
-Depositing
-----------
+**Question:** How do signatures work?<br />
+**Answer:** Add a `.png` image with either a transparent or white background to this directory. Then modify configurations `signature_front` or `signature_back` with the `.png` filename.
 
-If you have a laser printer and can buy magnetic ink, the checks will work pretty much everwhere. If you print this out with a regular inkjet or laser printer, I've heard of some ATMs that don't accept them, but otherwise work as normal. These days most checks are scanned via optical methods (camera phone on mobile bank deposit, or inside ATMs), so you shouldn't have a problem with non-magnetic ink. Legally, a check doesn't have to have magnetic ink, it was just historically the best way for machines to scan the routing and account number.
+## Changelog
 
+### [1.0] - 2024-03-04
+### Added
+- Documentation for getting started
+- Load configurations from `config.json`
+- Back of check with rotated signature
 
+### Changed
+- Forked from https://github.com/aaronpk/checks
+- PHP 8 compatiblity
+- Upgrade FPDF library to v1.86
+- Organized font files
