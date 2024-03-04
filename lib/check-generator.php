@@ -66,9 +66,9 @@ class CheckGenerator {
 		
 
 		$pdf=new FPDF('P','in',array($page_width,$page_height));
-		$pdf->AddFont('Twcen','','twcen.php');
-		$pdf->AddFont('Micr','','micr.php');
-		$pdf->AddFont('Courier','','courier.php');
+		$pdf->AddFont('Twcen','','twcen.php',dirname(__FILE__) . "/../fonts/");
+		$pdf->AddFont('Micr','','micr.php',dirname(__FILE__) . "/../fonts/");
+		$pdf->AddFont('Courier','','courier.php',dirname(__FILE__) . "/../fonts/");
 		$pdf->SetMargins($left_margin,$top_margin);
 		$pdf->SetDisplayMode("fullpage","continuous");
 		$pdf->AddPage();
